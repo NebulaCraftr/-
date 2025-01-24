@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>豆角的直播点歌台</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ffe6f0, #e6f2ff);
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            text-align: center;
+            color: #d07fb5;
+        }
+        header h1 {
+            font-size: 2.2em;
+            margin: 0;
+            color: #d07fb5;
+        }
+        header p {
+            margin: 5px 0;
+            font-size: 1em;
+            color: #888;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 1.05em;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #f2d9e6;
+        }
+        th {
+            background-color: #ffd1e1;
+            color: #d07fb5;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        td {
+            color: #555;
+        }
+        .button {
+            padding: 6px 12px;
+            background-color: #ff8fb2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #ff6f91;
+            transform: scale(1.05);
+        }
+        .song-name {
+            cursor: pointer;
+            color: #d07fb5;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .song-name:hover {
+            color: #b06b8f;
+        }
+        .copy-tip {
+            text-align: center;
+            color: #777;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        .toast {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d07fb5;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>豆角的直播点歌台 🎶</h1>
+        <p>深夜凌晨2：00至凌晨6:00</p>
+        <p>粉丝交流群（QQ群）：621807572</p>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>歌名</th>
+                <th>歌手</th>
+                <th>类别</th>
+                <th>备注</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td><span class="song-name" onclick="copyText('点歌 谁')">谁</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td><span class="song-name" onclick="copyText('点歌 默')">默</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td><span class="song-name" onclick="copyText('点歌 喂猪')">喂猪</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td><span class="song-name" onclick="copyText('点歌 山妖')">山妖</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td><span class="song-name" onclick="copyText('点歌 暖暖')">暖暖</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td><span class="song-name" onclick="copyText('点歌 宠爱')">宠爱</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td><span class="song-name" onclick="copyText('点歌 青柠')">青柠</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td><span class="song-name" onclick="copyText('点歌 舍得')">舍得</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>9</td>
+                <td><span class="song-name" onclick="copyText('点歌 配吗')">配吗</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td><span class="song-name" onclick="copyText('点歌 晚婚')">晚婚</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td><span class="song-name" onclick="copyText('点歌 雪季')">雪季</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td><span class="song-name" onclick="copyText('点歌 借梦')">借梦</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>13</td>
+                <td><span class="song-name" onclick="copyText('点歌 房间')">房间</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>14</td>
+                <td><span class="song-name" onclick="copyText('点歌 尽头')">尽头</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>15</td>
+                <td><span class="song-name" onclick="copyText('点歌 唯一')">唯一</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>16</td>
+                <td><span class="song-name" onclick="copyText('点歌 勇气')">勇气</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>17</td>
+                <td><span class="song-name" onclick="copyText('点歌 春泥')">春泥</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>18</td>
+                <td><span class="song-name" onclick="copyText('点歌 如愿')">如愿</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>19</td>
+                <td><span class="song-name" onclick="copyText('点歌 你走')">你走</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>20</td>
+                <td><span class="song-name" onclick="copyText('点歌 画心')">画心</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>21</td>
+                <td><span class="song-name" onclick="copyText('点歌 素颜')">素颜</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>22</td>
+                <td><span class="song-name" onclick="copyText('点歌 大鱼')">大鱼</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>23</td>
+                <td><span class="song-name" onclick="copyText('点歌 芊芊')">芊芊</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>24</td>
+                <td><span class="song-name" onclick="copyText('点歌 青印')">青印</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>25</td>
+                <td><span class="song-name" onclick="copyText('点歌 桃花笑')">桃花笑</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>26</td>
+                <td><span class="song-name" onclick="copyText('点歌 摇篮谣')">摇篮谣</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>27</td>
+                <td><span class="song-name" onclick="copyText('点歌 静悄悄')">静悄悄</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>28</td>
+                <td><span class="song-name" onclick="copyText('点歌 有点甜')">有点甜</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>29</td>
+                <td><span class="song-name" onclick="copyText('点歌 牵丝戏')">牵丝戏</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>30</td>
+                <td><span class="song-name" onclick="copyText('点歌 虞兮叹')">虞兮叹</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>31</td>
+                <td><span class="song-name" onclick="copyText('点歌 盗将行')">盗将行</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>32</td>
+                <td><span class="song-name" onclick="copyText('点歌 春风吹')">春风吹</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>33</td>
+                <td><span class="song-name" onclick="copyText('点歌 小酒窝')">小酒窝</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>34</td>
+                <td><span class="song-name" onclick="copyText('点歌 两相欢')">两相欢</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>35</td>
+                <td><span class="song-name" onclick="copyText('点歌 ok歌')">ok歌</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>36</td>
+                <td><span class="song-name" onclick="copyText('点歌 猪之歌')">猪之歌</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>37</td>
+                <td><span class="song-name" onclick="copyText('点歌 云与海')">云与海</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>38</td>
+                <td><span class="song-name" onclick="copyText('点歌 我和你')">我和你</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>39</td>
+                <td><span class="song-name" onclick="copyText('点歌 壁上观')">壁上观</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>40</td>
+                <td><span class="song-name" onclick="copyText('点歌 下一秒')">下一秒</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>41</td>
+                <td><span class="song-name" onclick="copyText('点歌 棠梨煎雪')">棠梨煎雪</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>42</td>
+                <td><span class="song-name" onclick="copyText('点歌 星月神话')">星月神话</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>43</td>
+                <td><span class="song-name" onclick="copyText('点歌 修炼爱情')">修炼爱情</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>44</td>
+                <td><span class="song-name" onclick="copyText('点歌 岁月神偷')">岁月神偷</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>45</td>
+                <td><span class="song-name" onclick="copyText('点歌 一只螃蟹')">一只螃蟹</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>46</td>
+                <td><span class="song-name" onclick="copyText('点歌 身骑白马')">身骑白马</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>47</td>
+                <td><span class="song-name" onclick="copyText('点歌 纸短情长')">纸短情长</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>48</td>
+                <td><span class="song-name" onclick="copyText('点歌 有何不可')">有何不可</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>49</td>
+                <td><span class="song-name" onclick="copyText('点歌 北京巷弄')">北京巷弄</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>50</td>
+                <td><span class="song-name" onclick="copyText('点歌 云烟成雨')">云烟成雨</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>51</td>
+                <td><span class="song-name" onclick="copyText('点歌 烟雨行舟')">烟雨行舟</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>52</td>
+                <td><span class="song-name" onclick="copyText('点歌 咖喱咖喱')">咖喱咖喱</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>53</td>
+                <td><span class="song-name" onclick="copyText('点歌 一点点喜欢')">一点点喜欢</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>54</td>
+                <td><span class="song-name" onclick="copyText('点歌 在你的身边')">在你的身边</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>55</td>
+                <td><span class="song-name" onclick="copyText('点歌 让风告诉你')">让风告诉你</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>56</td>
+                <td><span class="song-name" onclick="copyText('点歌 客官不可以')">客官不可以</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>57</td>
+                <td><span class="song-name" onclick="copyText('点歌 勇气大爆发')">勇气大爆发</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>58</td>
+                <td><span class="song-name" onclick="copyText('点歌 心愿便利贴')">心愿便利贴</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>59</td>
+                <td><span class="song-name" onclick="copyText('点歌 隐形的翅膀')">隐形的翅膀</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>60</td>
+                <td><span class="song-name" onclick="copyText('点歌 花好月圆夜')">花好月圆夜</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>61</td>
+                <td><span class="song-name" onclick="copyText('点歌 我只在乎你')">我只在乎你</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>62</td>
+                <td><span class="song-name" onclick="copyText('点歌 爱要坦荡荡')">爱要坦荡荡</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>63</td>
+                <td><span class="song-name" onclick="copyText('点歌 热恋冰淇淋')">热恋冰淇淋</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>64</td>
+                <td><span class="song-name" onclick="copyText('点歌 只对你有感觉')">只对你有感觉</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>65</td>
+                <td><span class="song-name" onclick="copyText('点歌 阿拉斯加海湾')">阿拉斯加海湾</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>66</td>
+                <td><span class="song-name" onclick="copyText('点歌 不要忘记我爱你')">不要忘记我爱你</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>67</td>
+                <td><span class="song-name" onclick="copyText('点歌 武家坡2021')">武家坡2021</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>68</td>
+                <td><span class="song-name" onclick="copyText('点歌 梁山伯与朱丽叶')">梁山伯与朱丽叶</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>69</td>
+                <td><span class="song-name" onclick="copyText('点歌 在加纳共和国离婚')">在加纳共和国离婚</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>70</td>
+                <td><span class="song-name" onclick="copyText('点歌 就让这大雨全都落下')">就让这大雨全都落下</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>
+            <tr>
+                <td>71</td>
+                <td><span class="song-name" onclick="copyText('点歌 好像掉进爱情海里')">好像掉进爱情海里</span></td>
+                <td>未知</td>
+                <td>未知</td>
+                <td>暂无</td>
+            </tr>            
+            <!-- ... 继续按此格式写完所有歌曲 -->
+        </tbody>        
+    </table>
+
+    <p class="copy-tip">点击歌曲名即可复制点歌信息</p>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+    // 复制文本并动态显示 Toast
+    function copyText(songName) {
+        const fullText = ` ${songName}`;
+        navigator.clipboard.writeText(fullText).then(() => {
+            showToast(fullText);
+        }).catch(err => {
+            console.error('复制失败！', err);
+        });
+    }
+
+    // 显示 Toast 的函数
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message; // 动态设置提示内容
+        toast.style.display = 'block';
+        setTimeout(() => {
+            toast.style.display = 'none';
+        }, 2000);
+    }
+</script>
+
+</body>
+</html>
