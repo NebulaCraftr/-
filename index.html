@@ -34,6 +34,17 @@
             font-size: 1em;
             color: #888;
         }
+        .search-bar {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .search-bar input {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -53,20 +64,6 @@
         }
         td {
             color: #555;
-        }
-        .button {
-            padding: 6px 12px;
-            background-color: #ff8fb2;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-            transition: transform 0.2s, background-color 0.3s;
-        }
-        .button:hover {
-            background-color: #ff6f91;
-            transform: scale(1.05);
         }
         .song-name {
             cursor: pointer;
@@ -107,7 +104,11 @@
         <p>粉丝交流群（QQ群）：621807572</p>
     </header>
 
-    <table>
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="输入歌名或歌手进行搜索..." oninput="filterSongs()">
+    </div>
+
+    <table id="songTable">
         <thead>
             <tr>
                 <th>序号</th>
@@ -625,6 +626,22 @@
 <div id="toast" class="toast"></div>
 
 <script>
+    // 实时搜索功能
+    function filterSongs() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const rows = document.querySelectorAll('#songTable tbody tr');
+
+        rows.forEach(row => {
+            const songName = row.cells[1].textContent.toLowerCase();
+            const singer = row.cells[2].textContent.toLowerCase();
+            if (songName.includes(input) || singer.includes(input)) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+    }
+
     // 复制文本并动态显示 Toast
     function copyText(songName) {
         const fullText = ` ${songName}`;
@@ -645,6 +662,10 @@
         }, 2000);
     }
 </script>
-
+<footer style="text-align: center; margin-top: 20px; color: #777; font-size: 0.9em;">
+    <p>更新日期：2025/1/27</p>
+    <p>版权所有 © 2025 唐朝的宇宙2333，保留所有权利</p>
+    <p>未经许可，侵权必究</p>
+</footer>
 </body>
 </html>
